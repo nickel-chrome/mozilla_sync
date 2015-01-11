@@ -149,13 +149,12 @@ class UrlParser {
 				continue;
 			}
 
-			$key = $tmpArray[0];
+			$key   = urldecode($tmpArray[0]);
+			$value = urldecode($tmpArray[1]);
 
 			// Split argument list, important for IDs
-			if (strpos($tmpArray[1], ',') === false) {
-				$value = $tmpArray[1];
-			} else {
-				$value = explode(',', $tmpArray[1]);
+			if (strpos($value, ',') !== false) {
+				$value = explode(',', $value);
 			}
 
 			$resultArray[$key] = $value;
